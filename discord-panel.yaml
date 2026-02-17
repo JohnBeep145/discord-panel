@@ -1,0 +1,44 @@
+name: harmonious_bethany
+services:
+  main_app:
+    cpu_shares: 90
+    command: []
+    container_name: discord-panel
+    deploy:
+      resources:
+        limits:
+          memory: 16618377216
+        reservations:
+          devices: []
+    image: johnworkspace/discord-bot-dashboard:latest
+    labels:
+      icon: https://icon.casaos.io/main/all/discord-bot-dashboard.png
+    ports:
+      - target: 2278
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /media/ZimaOS-HD/AppData/discordbotpanel/bots
+        target: /src/bots
+      - type: bind
+        source: /media/ZimaOS-HD/AppData/discordbotpanel/database
+        target: /src/database
+    devices: []
+    cap_add: []
+    environment: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://icon.casaos.io/main/all/discord-bot-dashboard.png
+  index: /
+  is_uncontrolled: false
+  port_map: "8080"
+  scheme: http
+  store_app_id: harmonious_bethany
+  title:
+    custom: discord-panel
